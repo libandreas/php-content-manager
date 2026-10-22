@@ -1,0 +1,193 @@
+/*all*/
+html {
+	-webkit-text-size-adjust: 100%;
+	overflow-x: hidden;
+}
+
+/*use potentially height 100% on boxes*/
+body {
+	/*το έβγαλα γιατί δεν δουλευει το sticky*/
+	position: relative;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+/*keyframes fix*/
+@-webkit-keyframes bugfix {
+	from {
+		padding: 0;
+	}
+
+	to {
+		padding: 0;
+	}
+}
+
+/*other*/
+.disabled {
+	filter: grayscale(100%);
+	pointer-events: none;
+}
+
+/*mobile start*/
+@media handheld,
+only screen and (max-width: 600px) {
+
+	.desktop,
+	.notinmobile {
+		display: none !important;
+		visibility: hidden;
+	}
+
+	.desktop-soft {
+		display: none;
+	}
+
+	.desktop-td,
+	desktop-tr {
+		display: none;
+	}
+
+	.mobile-tr {
+		display: table-row;
+	}
+
+	.mobile-td {
+		display: table-cell;
+	}
+
+	.mobile-block {
+		display: block;
+		width: 100% !important;
+	}
+
+	.mobile-input {
+		width: 100%;
+		display: block;
+	}
+
+	/*mobile only fixes*/
+	html {
+		overflow-wrap: break-word;
+	}
+
+	html * {
+		box-sizing: border-box;
+	}
+
+	html img,
+	iframe,
+	table,
+	marquee {
+		max-width: 100%;
+	}
+
+	marquee,
+	hr,
+	table,
+	blockquote {
+		width: 100%;
+	}
+
+	blockquote {
+		padding: 0;
+		margin: 0;
+	}
+
+	/*better view on mobile*/
+	.mobile-view h1,
+	.mobile-view h1 * {
+		font-size: 20pt;
+		margin: 20px 0;
+	}
+
+	.mobile-view h2,
+	.mobile-view h2 * {
+		font-size: 14pt;
+		/* margin: 15px 0; */
+	}
+
+	.mobile-view h3,
+	.mobile-view h3 * {
+		font-size: 18pt;
+		margin: 18px 0;
+	}
+
+	.mobile-view h4,
+	.mobile-view h4 * {
+		font-size: 17pt;
+		margin: 17px 0;
+	}
+
+	.mobile-view h5,
+	.mobile-view h5 * {
+		font-size: 16pt;
+		margin: 16px 0;
+	}
+
+	.mobile-view small,
+	.mobile-view small * {
+		font-size: 12pt;
+		display: inline-block;
+		line-height: normal;
+	}
+
+	.mobile-view sup,
+	.mobile-view sup * {
+		font-size: 12pt;
+	}
+
+	.mobile-view sub,
+	.mobile-view sub * {
+		font-size: 12pt;
+	}
+
+	.mobile-view ul,
+	.mobile-view ol,
+	.mobile-view ul *,
+	.mobile-view ol * {
+		text-decoration: none;
+	}
+
+	.mobile-view ul,
+	.mobile-view ol,
+	.mobile-view li {
+		line-height: 27px;
+	}
+
+	.mobile-view p {
+		line-height: 27px;
+		font-size: 15pt;
+	}
+
+	.mobile-view *:not(:where(#logotext *, #nav *)) {
+		line-height: 27px;
+		font-size: 14pt;
+	}
+
+	.mobile-background-white {
+		background: white;
+		background-color: white;
+	}
+
+	.mobile-margin-6 {
+		margin: 6px;
+	}
+}
+
+@media handheld,
+only screen and (min-width: 601px) {
+
+	/*don't display mobile class on desktop*/
+	.mobile,
+	.notindesktop,
+	.mobile-tr,
+	.mobile-td {
+		display: none !important;
+		visibility: hidden;
+	}
+
+	.mobile-soft {
+		display: none;
+	}
+}
