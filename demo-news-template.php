@@ -14,7 +14,6 @@ $page_title = $article ? $article['title'] : 'Το άρθρο δεν βρέθη�
 $page = max(1, (int) filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT));
 
 // Το Content 2 προσθέτει αυτόματα τον σύνδεσμο επεξεργασίας για τον διαχειριστή.
-include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
 ?>
 <!DOCTYPE html>
 <html lang="el">
@@ -22,26 +21,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8') ?></title>
-    <script defer src="/common/content-9.js"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', async () => {
-            const pageUrl = new URL(location.href);
-            pageUrl.search = '';
-            pageUrl.hash = '';
-            try {
-                const response = await fetch('/common/content-9.php', {
-                    method: 'POST',
-                    body: new URLSearchParams({ type: 'request', location: pageUrl.href, referrer: document.referrer }),
-                    credentials: 'omit',
-                    cache: 'no-store',
-                    keepalive: true
-                });
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-            } catch (error) {
-                console.error('Analytics: αποτυχία καταγραφής επίσκεψης | message=' + error.message);
-            }
-        });
-    </script>
 </head>
 <body>
     <main>

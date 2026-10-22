@@ -7,14 +7,13 @@ $articles = read_news_entries();
 krsort($articles, SORT_STRING);
 $page_title = 'Αυτοσχέδια εργαλεία για τον ιστό';
 
-// Δύο άρθρα ανά σελίδα: τα έξι παραδείγματα εμφανίζονται σε τρεις σελίδες.
+// Δύο άρθρα ανά σελίδα: τα πέντε παραδείγματα εμφανίζονται σε τρεις σελίδες.
 $per_page = 2;
 $page_count = max(1, (int) ceil(count($articles) / $per_page));
 $requested_page = filter_input(INPUT_GET, 'page', FILTER_VALIDATE_INT);
 $page = min($page_count, max(1, (int) $requested_page));
 $page_articles = array_slice($articles, ($page - 1) * $per_page, $per_page, true);
 
-include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
 ?>
 <!DOCTYPE html>
 <html lang="el">
@@ -22,26 +21,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($page_title, ENT_QUOTES, 'UTF-8') ?></title>
-    <script defer src="/common/content-9.js"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', async () => {
-            const pageUrl = new URL(location.href);
-            pageUrl.search = '';
-            pageUrl.hash = '';
-            try {
-                const response = await fetch('/common/content-9.php', {
-                    method: 'POST',
-                    body: new URLSearchParams({ type: 'request', location: pageUrl.href, referrer: document.referrer }),
-                    credentials: 'omit',
-                    cache: 'no-store',
-                    keepalive: true
-                });
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-            } catch (error) {
-                console.error('Analytics: αποτυχία καταγραφής επίσκεψης | message=' + error.message);
-            }
-        });
-    </script>
 </head>
 <body>
     <nav aria-label="Παραδείγματα CMS">

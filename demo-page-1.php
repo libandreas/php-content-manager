@@ -1,7 +1,6 @@
 <?php
 // Το Content 3 προσθέτει τον σύνδεσμο επεξεργασίας για συνδεδεμένο διαχειριστή.
 require_once __DIR__ . '/common/content-3.php';
-include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
 ?>
 <!DOCTYPE html>
 <html lang="el">
@@ -10,26 +9,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Χειροποίητα εργαλεία PHP για ιστοσελίδες που εξελίσσονται μαζί με τις ιδέες σου.">
     <title>Demo Page 1 - HTML</title>
-    <script defer src="/common/content-9.js"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', async () => {
-            const pageUrl = new URL(location.href);
-            pageUrl.search = '';
-            pageUrl.hash = '';
-            try {
-                const response = await fetch('/common/content-9.php', {
-                    method: 'POST',
-                    body: new URLSearchParams({ type: 'request', location: pageUrl.href, referrer: document.referrer }),
-                    credentials: 'omit',
-                    cache: 'no-store',
-                    keepalive: true
-                });
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-            } catch (error) {
-                console.error('Analytics: αποτυχία καταγραφής επίσκεψης | message=' + error.message);
-            }
-        });
-    </script>
 </head>
 <body>
     <nav aria-label="Παραδείγματα CMS"><a href="/demo-news.php">Ιστολόγιο</a> <a href="/demo-page-2.php">Σελίδες με panel</a> <a href="/demo-page-3.php">Το εργαστήριο</a> <a href="/demo-page-4.php">Ζωντανή επεξεργασία</a></nav>

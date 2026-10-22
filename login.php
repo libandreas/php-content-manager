@@ -35,7 +35,6 @@ if (isset($_POST['login'])) {
     }
     $message = 'Το όνομα χρήστη ή ο κωδικός δεν είναι σωστά.';
 }
-include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
 ?>
 <!DOCTYPE html>
 <html lang="el-GR">
@@ -44,26 +43,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
     <title>Demo σύνδεσης</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script defer src="/common/content-9.js"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', async () => {
-            const pageUrl = new URL(location.href);
-            pageUrl.search = '';
-            pageUrl.hash = '';
-            try {
-                const response = await fetch('/common/content-9.php', {
-                    method: 'POST',
-                    body: new URLSearchParams({ type: 'request', location: pageUrl.href, referrer: document.referrer }),
-                    credentials: 'omit',
-                    cache: 'no-store',
-                    keepalive: true
-                });
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-            } catch (error) {
-                console.error('Analytics: αποτυχία καταγραφής επίσκεψης | message=' + error.message);
-            }
-        });
-    </script>
 </head>
 
 <body>

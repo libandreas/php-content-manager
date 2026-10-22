@@ -1,6 +1,5 @@
 <?php
 require_once __DIR__ . '/common/content-3.php';
-include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
 ?>
 <!DOCTYPE html>
 <html lang="el">
@@ -9,26 +8,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Ένα αυτοσχέδιο εργαλείο μετάφρασης που δίνει στις ιστοσελίδες νέες γλώσσες μέσα από μια συλλογή JSON strings.">
     <title>Demo Page 3 - HTML</title>
-    <script defer src="/common/content-9.js"></script>
-    <script>
-        window.addEventListener('DOMContentLoaded', async () => {
-            const pageUrl = new URL(location.href);
-            pageUrl.search = '';
-            pageUrl.hash = '';
-            try {
-                const response = await fetch('/common/content-9.php', {
-                    method: 'POST',
-                    body: new URLSearchParams({ type: 'request', location: pageUrl.href, referrer: document.referrer }),
-                    credentials: 'omit',
-                    cache: 'no-store',
-                    keepalive: true
-                });
-                if (!response.ok) throw new Error('HTTP ' + response.status);
-            } catch (error) {
-                console.error('Analytics: αποτυχία καταγραφής επίσκεψης | message=' + error.message);
-            }
-        });
-    </script>
 </head>
 <body>
     <nav aria-label="Παραδείγματα CMS"><a href="/demo-news.php">Ιστολόγιο</a> <a href="/demo-page-1.php">Το δικό μου CMS</a> <a href="/demo-page-2.php">Σελίδες με panel</a></nav>
