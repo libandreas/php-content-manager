@@ -1,0 +1,47 @@
+<?php
+// Ο live editor εφαρμόζει αλλαγές στο παραγόμενο HTML μέσω του Content 4.
+// Η αποθήκευση γίνεται στο live-edits.json, χωρίς αλλαγή αυτού του αρχείου.
+require_once __DIR__ . '/common/content-4.php';
+include_once $_SERVER["DOCUMENT_ROOT"] . "/common/content-9.php";
+?>
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Demo Page 4 - Live Edit</title>
+    <script defer src="/common/content-9.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', async () => {
+            const pageUrl = new URL(location.href);
+            pageUrl.search = '';
+            pageUrl.hash = '';
+            try {
+                const response = await fetch('/common/content-9.php', {
+                    method: 'POST',
+                    body: new URLSearchParams({ type: 'request', location: pageUrl.href, referrer: document.referrer }),
+                    credentials: 'omit',
+                    cache: 'no-store',
+                    keepalive: true
+                });
+                if (!response.ok) throw new Error('HTTP ' + response.status);
+            } catch (error) {
+                console.error('Analytics: αποτυχία καταγραφής επίσκεψης | message=' + error.message);
+            }
+        });
+    </script>
+</head>
+<body>
+    <nav aria-label="Παραδείγματα CMS"><a href="/demo-news.php">Ιστολόγιο</a> <a href="/demo-page-1.php">Το δικό μου CMS</a></nav>
+    <main>
+        <h1>Ένας live editor για τις αλλαγές της στιγμής</h1>
+        <p>Βλέπεις μια φράση και σκέφτεσαι μια καλύτερη. Το Content 4 φέρνει αυτή τη μικρή δημιουργική στιγμή πάνω στην ίδια τη σελίδα.</p>
+        <section>
+            <h2>Το περιεχόμενο μέσα στο φυσικό του περιβάλλον</h2>
+            <p>Η ζωντανή επεξεργασία σε αφήνει να δουλεύεις έχοντας μπροστά σου την εικόνα της σελίδας. Το κείμενο, οι ενότητες και ο ρυθμός της παραμένουν μαζί όσο κάνεις τις αλλαγές σου.</p>
+            <p>Το project συνδέει έναν οπτικό editor με τη δική μου λογική αποθήκευσης. Ένα μικρό πείραμα που κάνει την ανανέωση της ιστοσελίδας πιο άμεση και πιο ευχάριστη.</p>
+        </section>
+        <p>Μερικές φορές, μια νέα διατύπωση αρκεί για να αποκτήσει μια σελίδα άλλη ενέργεια.</p>
+    </main>
+</body>
+</html>
