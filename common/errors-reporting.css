@@ -1,0 +1,120 @@
+/* Error Confirmation Popup Styles */
+.erh-popup-overlay {
+	position: fixed;
+	top: 0px;
+	left: 0;
+	width: 100%;
+	z-index: 999999999999999999;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	pointer-events: none;
+	animation: erhFadeIn 0.3s ease-out;
+}
+
+.erh-popup {
+	background: red;
+	/* Default, will be overridden by type classes */
+	color: white;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	border-left: 9px solid darkred;
+	width: 100%;
+	padding: 16px;
+	box-sizing: border-box;
+	font-family: 'Segoe UI', sans-serif;
+	font-size: 14px;
+	pointer-events: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+/* Dynamic colors based on type */
+.erh-popup.erh-is-error {
+	background: red;
+	border-left-color: darkred;
+}
+
+.erh-popup.erh-is-warning {
+	background: orangered;
+	border-left-color: darkred;
+}
+
+.erh-popup-header {
+	font-weight: 600;
+	font-size: 16px;
+	color: white;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.erh-popup-content {
+	line-height: 1.5;
+}
+
+.erh-help-text {
+	font-style: italic;
+	font-size: 13px;
+	color: white;
+	opacity: 0.8;
+	margin-top: 4px;
+	margin-bottom: 4px;
+}
+
+.erh-popup-message {
+	font-family: 'Consolas', 'Monaco', monospace;
+	color: white;
+	white-space: pre-line;
+	word-break: break-all;
+	max-height: 150px;
+	overflow-y: auto;
+	font-size: 12px;
+}
+
+.erh-popup-buttons {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+}
+
+.erh-btn {
+	padding: 8px 16px;
+	border: none;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: 14px;
+	transition: background 0.2s;
+	min-width: 80px;
+}
+
+.erh-btn-primary {
+	background: white;
+	color: #333;
+}
+
+.erh-btn-primary:hover {
+	background: #f0f0f0;
+}
+
+.erh-btn-secondary {
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
+}
+
+.erh-btn-secondary:hover {
+	background: rgba(255, 255, 255, 0.2);
+}
+
+.erh-popup-close {
+	cursor: pointer;
+	font-size: 18px;
+	line-height: 1;
+	padding: 4px;
+	color: white;
+	opacity: 0.8;
+}
+
+.erh-popup-close:hover {
+	opacity: 1;
+}
